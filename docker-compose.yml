@@ -3,16 +3,16 @@ services:
   app:
     build:
       args:
-        user: sammy
+        user: hassan
         uid: 1000
       context: ./
       dockerfile: Dockerfile
     image: travellist
     container_name: travellist-app
     restart: unless-stopped
-    working_dir: /var/www/
+    working_dir: /var/www/html/travel
     volumes:
-      - ./:/var/www
+      - /:/var/www/html/travel:/var/www/html/
     networks:
       - travellist
 
@@ -21,10 +21,10 @@ services:
     container_name: travellist-db
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: ${DB_DATABASE}
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_DATABASE: travel_db
+      MYSQL_ROOT_PASSWORD: nahas111
+      MYSQL_PASSWORD: nahas123
+      MYSQL_USER: hassan
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     volumes:
